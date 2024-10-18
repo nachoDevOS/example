@@ -11,7 +11,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'template:install';
+    protected $signature = 'example:install';
 
     /**
      * The console command description.
