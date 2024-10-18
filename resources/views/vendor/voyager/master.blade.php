@@ -14,6 +14,10 @@
 
     <link rel="stylesheet" href="{{ asset('css/dataTable/dataTable.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/h1/page-title.css') }}">
+
+    
+
     <!-- Favicon -->
     <?php $admin_favicon = Voyager::setting('admin.icon_image', ''); ?>
     @if($admin_favicon == '')
