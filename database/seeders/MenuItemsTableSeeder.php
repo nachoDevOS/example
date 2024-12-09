@@ -243,6 +243,22 @@ class MenuItemsTableSeeder extends Seeder
                 'route' => NULL,
                 'parameters' => '',
             ),
+            14 => 
+            array (
+                'id' => 15,
+                'menu_id' => 1,
+                'title' => 'Limpiar cache',
+                'url' => '',
+                'target' => '_self',
+                'icon_class' => 'fa-solid fa-broom',
+                'color' => '#000000',
+                'parent_id' => NULL,
+                'order' => 8,
+                'created_at' => '2024-12-09 12:33:25',
+                'updated_at' => '2024-12-09 12:33:25',
+                'route' => 'clear.cache',
+                'parameters' => NULL,
+            ),
         ));
         
         
