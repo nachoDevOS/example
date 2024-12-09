@@ -83,4 +83,14 @@
         });
 
     </script>
+
+<script type="text/javascript" src="{{ voyager_asset('js/app.js') }}"></script>
+@if (setting('configuracion.navidad'))
+    <script type="text/javascript" src="{{asset('navidad/snow.js')}}"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(document).snow({ SnowImage: "{{ asset('navidad/image/icon.png') }}", SnowImage2: "{{ asset('navidad/image/caramelo.png') }}" });
+        });
+    </script>
+@endif
 @endsection
