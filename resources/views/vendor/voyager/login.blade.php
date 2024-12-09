@@ -14,10 +14,19 @@
                 </div>
             </div>
 
-            <div class="form-group form-group-default" id="passwordGroup">
+            {{-- <div class="form-group form-group-default" id="passwordGroup">
                 <label>{{ __('voyager::generic.password') }}</label>
                 <div class="controls">
                     <input type="password" name="password" placeholder="{{ __('voyager::generic.password') }}" class="form-control" required>
+                </div>
+            </div> --}}
+            <div class="form-group form-group-default" id="passwordGroup">
+                <label>{{ __('voyager::generic.password') }}</label>
+                <div class="input-group controls">
+                    <input type="password" id="input-password" name="password" placeholder="{{ __('voyager::generic.password') }}" class="form-control" required>
+                    <span class="input-group-addon" style="background:#fff;border:0px;font-size:25px;cursor:pointer;padding:0px;position: relative;bottom:10px" id="btn-verpassword">
+                        <span class="fa fa-eye"></span>
+                    </span>
                 </div>
             </div>
 
@@ -50,7 +59,7 @@
 @endsection
 
 @section('post_js')
-
+    <script type="text/javascript" src="{{ voyager_asset('js/app.js') }}"></script>
     <script>
         var btn = document.querySelector('button[type="submit"]');
         var form = document.forms[0];
@@ -82,9 +91,24 @@
             document.getElementById('passwordGroup').classList.remove("focused");
         });
 
+        $(document).ready(function(){
+            let ver_pass = false;
+            $('#btn-verpassword').click(function(){
+                if(ver_pass){
+                    ver_pass = false;
+                    $(this).html('<span class="fa fa-eye"></span>');
+                    $('#input-password').prop('type', 'password');
+                }else{
+                    ver_pass = true;
+                    $(this).html('<span class="fa fa-eye-slash"></span>');
+                    $('#input-password').prop('type', 'text');
+                }
+            });
+        });
+
     </script>
 
-<script type="text/javascript" src="{{ voyager_asset('js/app.js') }}"></script>
+
 @if (setting('configuracion.navidad'))
     <script type="text/javascript" src="{{asset('navidad/snow.js')}}"></script>
     <script type="text/javascript">
