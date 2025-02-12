@@ -12,10 +12,27 @@
 @section('page_title', __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular'))
 
 @section('page_header')
-    <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i>
-        {{ __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular') }}
-    </h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-bordered">
+                    <div class="panel-body" style="padding: 0px">
+                        <div class="col-md-5" style="padding: 0px">
+                            <h1 class="page-title">
+                                <i class="{{ $dataType->icon }}"></i>
+                                {{ __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular') }}
+                            </h1>
+                        </div>
+                        <div class="col-md-7 text-right" style="margin-top: 30px">
+                            <a onclick="window.history.back()" class="btn btn-warning btn-add-new">
+                                <i class="fa-solid fa-circle-left"></i> <span>Volver</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     @include('voyager::multilingual.language-selector')
 @stop
 

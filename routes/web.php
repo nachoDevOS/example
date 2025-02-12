@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeopleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    
+    Route::get('people', [PeopleController::class, 'index'])->name('voyager.people.index');
+    Route::get('people/ajax/list', [PeopleController::class, 'list']);
+
 });
 
 

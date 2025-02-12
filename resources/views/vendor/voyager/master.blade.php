@@ -12,9 +12,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
 
+    {{-- <link rel="stylesheet" href="{{ asset('css/dataTable/dataTable.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/dataTable/dataTable.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/h1/page-title.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/style/page-title.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style/small.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style/h.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style/input.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style/label.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style/p.css') }}">
 
     
 
@@ -63,7 +70,7 @@
 
 <body class="voyager @if(isset($dataType) && isset($dataType->slug)){{ $dataType->slug }}@endif">
 
-<div id="voyager-loader">
+<div id="voyager-loader" style="animation: none !important;">
     <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
     @if($admin_loader_img == '')
         <img src="{{ voyager_asset('images/logo-icon.png') }}" alt="Voyager Loader">
