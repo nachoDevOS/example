@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('css/style/input.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style/label.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style/p.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style/li.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style/span.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/style/a.css') }}"> --}}
 
     
 
