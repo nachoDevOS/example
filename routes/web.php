@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\ErrorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,11 @@ Route::get('/', function () {
     return redirect('admin');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::get('/development', [ErrorController::class , 'error503'])->name('development');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['loggin']], function () {
     Voyager::routes();
-    
+
     Route::get('people', [PeopleController::class, 'index'])->name('voyager.people.index');
     Route::get('people/ajax/list', [PeopleController::class, 'list']);
 
