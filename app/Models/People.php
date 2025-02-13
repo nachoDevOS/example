@@ -25,6 +25,12 @@ class People extends Model
         'gender',
         'image',
         'status',
-        'deleted_at'
+
+        'registerUser_id',
+        'registerRole',
+        'deleted_at',
+        'deletedUser_id',
+        'deletedRole',
+        'deletedObservation',
     ];
 }
