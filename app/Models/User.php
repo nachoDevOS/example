@@ -7,23 +7,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\RegistersUserEvents;
+
 
 class User extends \TCG\Voyager\Models\User
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, RegistersUserEvents;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'person_id',
         'name',
         'role_id',
         'email',
         'password',
-        'status'
+        'status',
+
+
+        'registerUser_id',
+        'registerRole',
+        'deleted_at',
+        'deleteUser_id',
+        'deleteRole',
+        'deleteObservation',
     ];
 
     public function person()

@@ -38,8 +38,6 @@ class UserController extends Controller
                     // ->where('deleted_at', NULL)
                     ->orderBy('id', 'DESC')
                     ->paginate($paginate);
-        // dump($data);
-        // return 1;
         return view('vendor.voyager.users.list', compact('data'));
     }
 
@@ -93,8 +91,6 @@ class UserController extends Controller
 
         } catch (\Exception $e) {
             DB::rollback();
-            Log::channel('error')->error('Error al actualizar usuario: ' . $e->getMessage());
-            // Log::channel('requests')->info('Petición HTTP al sistema.', $data);
 
             return redirect()->route('voyager.users.index')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
         }  

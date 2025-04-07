@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use App\Models\User;
+
 class PersonController extends Controller
 {
     public function __construct()
@@ -13,6 +15,7 @@ class PersonController extends Controller
 
     public function index()
     {
+        // return User::all();
         return view('administrations.people.browse');
     }
     
