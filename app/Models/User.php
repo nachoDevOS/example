@@ -18,16 +18,20 @@ class User extends \TCG\Voyager\Models\User
      * @var array<int, string>
      */
     protected $fillable = [
+        'person_id',
         'name',
+        'role_id',
         'email',
         'password',
+        'status'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'person_id');
+    }
+
+
     protected $hidden = [
         'password',
         'remember_token',

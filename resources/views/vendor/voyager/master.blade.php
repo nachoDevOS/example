@@ -176,5 +176,9 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
     @foreach(config('voyager.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
 @endif
 
+{{-- Loading --}}
+<script src="{{ asset('vendor/loading/loading.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('vendor/loading/loading.css') }}">
+
 </body>
 </html>

@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ErrorController;
-
+use App\Http\Controllers\PersonController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AjaxController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +31,18 @@ Route::get('/development', [ErrorController::class , 'error503'])->name('develop
 Route::group(['prefix' => 'admin', 'middleware' => ['loggin']], function () {
     Voyager::routes();
 
-    Route::get('people', [PeopleController::class, 'index'])->name('voyager.people.index');
-    Route::get('people/ajax/list', [PeopleController::class, 'list']);
+    Route::get('people', [PersonController::class, 'index'])->name('voyager.people.index');
+    Route::get('people/ajax/list', [PersonController::class, 'list']);
+
+
+    Route::get('users/ajax/list', [UserController::class, 'list']);
+    Route::post('users/store', [UserController::class, 'store'])->name('voyager.users.store');
+    Route::put('users/{id}', [UserController::class, 'update'])->name('voyager.users.update');
+
+
+
+    Route::get('ajax/personList', [AjaxController::class, 'personList']);
+    // Route::post('people/store', [AjaxController::class, 'peopleStore']);
 
 });
 

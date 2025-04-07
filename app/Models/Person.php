@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\RegistersUserEvents;
 
-
-class People extends Model
+class Person extends Model
 {
     use HasFactory, RegistersUserEvents, SoftDeletes;
 
@@ -17,7 +16,9 @@ class People extends Model
     protected $fillable = [
         'ci',
         'first_name',
-        'last_name',
+        'middle_name',
+        'paternal_surname',
+        'maternal_surname',
         'birth_date',
         'email',
         'phone',
@@ -29,8 +30,8 @@ class People extends Model
         'registerUser_id',
         'registerRole',
         'deleted_at',
-        'deletedUser_id',
-        'deletedRole',
-        'deletedObservation',
+        'deleteUser_id',
+        'deleteRole',
+        'deleteObservation',
     ];
 }

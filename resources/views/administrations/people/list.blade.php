@@ -3,13 +3,13 @@
         <table id="dataTable" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>CI</th>
-                    <th>Nombre completo</th>                    
-                    <th>Fecha nac.</th>
-                    <th>Telefono</th>
-                    <th>Estado</th>
-                    <th class="text-right">Acciones</th>
+                    <th style="text-align: center">ID</th>
+                    <th style="text-align: center">CI/Pasaporte</th>
+                    <th style="text-align: center">Nombre completo</th>                    
+                    <th style="text-align: center">Fecha nac.</th>
+                    <th style="text-align: center">Telefono/Celular</th>
+                    <th style="text-align: center">Estado</th>
+                    <th style="text-align: center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +20,7 @@
                     <td>
                         <table>
                             @php
-                                $image = asset('image/default.png');
+                                $image = asset('image/default.jpg');
                                 if($item->image){
                                     $image = asset('storage/'.str_replace('.', '-cropped.', $item->image));
                                 }
@@ -31,13 +31,19 @@
                             <tr>
                                 <td><img src="{{ $image }}" alt="{{ $item->first_name }} " style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"></td>
                                 <td>
-                                    {{ strtoupper($item->first_name) }} {{ strtoupper($item->last_name) }} 
+                                    {{ strtoupper($item->first_name) }} {{ $item->middle_name??strtoupper($item->middle_name) }} {{ strtoupper($item->paternal_surname) }}  {{ strtoupper($item->maternal_surname) }} 
                                 </td>
                             </tr>
                         </table>
                     </td>
-                    <td>{{ date('d/m/Y', strtotime($item->birth_date)) }} <br> <small>{{ $age }} años</small> </td>
-                    <td>{{ $item->phone?$item->phone:'SN' }}</td>
+                    <td style="text-align: center">
+                        @if ($item->birth_date)
+                            {{ date('d/m/Y', strtotime($item->birth_date)) }} <br> <small>{{ $age }} años</small>
+                        @else
+                            Sin Datos                            
+                        @endif
+                    </td>
+                    <td style="text-align: center">{{ $item->phone?$item->phone:'SN' }}</td>
                     <td style="text-align: center">
                         @if ($item->status==1)  
                             <label class="label label-success">Activo</label>
@@ -47,7 +53,7 @@
 
                         
                     </td>
-                    <td class="no-sort no-click bread-actions text-right">
+                    <td style="width: 18%" class="no-sort no-click bread-actions text-right">
                         @if (auth()->user()->hasPermission('read_people'))
                             <a href="{{ route('voyager.people.show', ['id' => $item->id]) }}" title="Ver" class="btn btn-sm btn-warning view">
                                 <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
@@ -59,7 +65,7 @@
                             </a>
                         @endif
                         @if (auth()->user()->hasPermission('delete_people'))
-                            <a href="#" onclick="destroyItem('{{ route('voyager.people.destroy', ['id' => $item->id]) }}')" title="Eliminar" data-toggle="modal" data-target="#destroy-modal" class="btn btn-sm btn-danger delete">
+                            <a href="#" onclick="deleteItem('{{ route('voyager.people.destroy', ['id' => $item->id]) }}')" title="Eliminar" data-toggle="modal" data-target="#modal-delete" class="btn btn-sm btn-danger delete">
                                 <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
                             </a>
                         @endif

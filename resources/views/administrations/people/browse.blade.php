@@ -57,7 +57,7 @@
 
 
 
-    @include('partials.modal_deleted')
+    @include('partials.modal-delete')
 
 
 
@@ -97,7 +97,7 @@
         });
 
         function list(page = 1){
-            // $('#div-results').loading({message: 'Cargando...'});
+            $('#div-results').loading({message: 'Cargando...'});
 
             let url = '{{ url("admin/people/ajax/list") }}';
             let search = $('#input-search').val() ? $('#input-search').val() : '';
@@ -116,8 +116,9 @@
 
         }
 
-        function destroyItem(url){
-            $('#destroy_form').attr('action', url);
+
+        function deleteItem(url){
+            $('#delete_form').attr('action', url);
         }
        
 

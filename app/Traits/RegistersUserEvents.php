@@ -19,8 +19,8 @@ trait RegistersUserEvents
         static::deleting(function ($model) {
             if (Auth::check()) {
                 $user = Auth::user();
-                $model->deletedUser_id = $user->id;
-                $model->deletedRole = $user->role->name;
+                $model->deleteUser_id = $user->id;
+                $model->deleteRole = $user->role->name;
                 $model->save();
             }
         });

@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
+            
             $table->string('ci')->nullable();
+
             $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('middle_name')->nullable();
+            $table->string('paternal_surname')->nullable();
+            $table->string('maternal_surname')->nullable();
 
             $table->date('birth_date')->nullable();
             $table->string('email')->nullable();
@@ -36,9 +40,9 @@ return new class extends Migration
             $table->string('registerRole')->nullable();
 
             $table->softDeletes();
-            $table->foreignId('deletedUser_id')->nullable()->constrained('users');
-            $table->string('deletedRole')->nullable();
-            $table->text('deletedObservation')->nullable();
+            $table->foreignId('deleteUser_id')->nullable()->constrained('users');
+            $table->string('deleteRole')->nullable();
+            $table->text('deleteObservation')->nullable();
         });
     }
 
