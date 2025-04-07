@@ -8,14 +8,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\RegistersUserEvents;
+
+// use App\Traits\RegistersUserEvents;
 
 
 class User extends \TCG\Voyager\Models\User
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, RegistersUserEvents;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     protected $dates = ['deleted_at'];
+
 
     protected $fillable = [
         'person_id',
@@ -24,8 +26,7 @@ class User extends \TCG\Voyager\Models\User
         'email',
         'password',
         'status',
-
-
+        
         'registerUser_id',
         'registerRole',
         'deleted_at',

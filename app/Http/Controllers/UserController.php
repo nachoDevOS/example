@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -14,11 +16,13 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $this->custom_authorize('browse_users');
-        return view('vendor.voyager.users.browse');
-    }
+    // public function index()
+    // {
+    //     $this->custom_authorize('browse_users');
+    //     return User::all();
+
+    //     return view('vendor.voyager.users.broswse');
+    // }
 
 
     public function list()
@@ -33,7 +37,6 @@ class UserController extends Controller
                         $query->OrWhereRaw($search ? "id = '$search'" : 1)
                         ->OrWhereRaw($search ? "name like '%$search%'" : 1)
                         ->OrWhereRaw($search ? "email like '%$search%'" : 1);
-                        // ->OrWhereRaw($search ? "address like '%$search%'" : 1);
                     })
                     // ->where('deleted_at', NULL)
                     ->orderBy('id', 'DESC')
@@ -50,6 +53,7 @@ class UserController extends Controller
             return redirect()->route('voyager.users.index')->with(['message' => 'El correo ya existe.', 'alert-type' => 'warning    ']);
         }
         $person = Person::where('deleted_at', null)->where('status', 1)->where('id', $request->person_id)->first();
+    
         DB::beginTransaction();
         try {
             
@@ -59,7 +63,11 @@ class UserController extends Controller
                 'role_id' => $request->role_id,
                 'email' => $request->email,
                 'avatar' => 'users/default.png',
-                'password' => bcrypt($request->password)
+                'password' => bcrypt($request->password),
+                'registerUser_id'=>Auth::user()->id,
+                'registerRole'=>Auth::user()->role->name,
+                // 'settings' => '{"locale":"es"}'
+
             ]);
             DB::commit();
             return redirect()->route('voyager.users.index')->with(['message' => 'Registrado exitosamente.', 'alert-type' => 'success']);
@@ -92,6 +100,25 @@ class UserController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
 
+            return redirect()->route('voyager.users.index')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }  
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $user = User::where('id', $id)->where('deleted_at', null)->first();
+            $user->update([
+                'deleted_at' => Carbon::now(),
+                'deleteUser_id'=>Auth::user()->id,
+                'deleteRole'=>Auth::user()->role->name,
+                'deleteObservation'=>$request->deleteObservation
+            ]);
+            DB::commit();
+            return redirect()->route('voyager.users.index')->with(['message' => 'Eliminado exitosamente.', 'alert-type' => 'success']);
+        } catch (\Exception $e) {
+            DB::rollback();
             return redirect()->route('voyager.users.index')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
         }  
     }
