@@ -277,7 +277,7 @@ class MenuItemsTableSeeder extends Seeder
             ),
             16 => 
             array (
-                'id' => 17,
+                'id' => 18,
                 'menu_id' => 1,
                 'title' => 'Personas',
                 'url' => '',
@@ -286,8 +286,8 @@ class MenuItemsTableSeeder extends Seeder
                 'color' => NULL,
                 'parent_id' => 16,
                 'order' => 1,
-                'created_at' => '2025-02-10 15:44:50',
-                'updated_at' => '2025-02-10 15:45:11',
+                'created_at' => '2025-04-07 09:43:00',
+                'updated_at' => '2025-04-07 09:44:30',
                 'route' => 'voyager.people.index',
                 'parameters' => NULL,
             ),

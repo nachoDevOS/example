@@ -129,21 +129,21 @@ class DataTypesTableSeeder extends Seeder
             ),
             6 => 
             array (
-                'id' => 7,
+                'id' => 8,
                 'name' => 'people',
                 'slug' => 'people',
                 'display_name_singular' => 'Persona',
                 'display_name_plural' => 'Personas',
                 'icon' => 'fa-solid fa-person',
-                'model_name' => 'App\\Models\\People',
+                'model_name' => 'App\\Models\\Person',
                 'policy_name' => NULL,
                 'controller' => NULL,
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
-                'created_at' => '2025-02-10 15:44:50',
-                'updated_at' => '2025-02-12 13:41:20',
+                'created_at' => '2025-04-07 09:43:00',
+                'updated_at' => '2025-04-07 10:25:25',
             ),
         ));
         
