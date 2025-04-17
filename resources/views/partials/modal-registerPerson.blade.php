@@ -1,4 +1,4 @@
-<form action="{{ url('admin/people/store') }}" id="form-create-person" method="POST">
+<form action="{{ url('admin/ajax/person/store') }}" id="create-form-person" method="POST">
     <div class="modal fade" tabindex="-1" id="modal-create-person" role="dialog">
         <div class="modal-dialog modal-primary">
             <div class="modal-content">
@@ -21,11 +21,11 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="full_name">Apellido Paterno</label>
-                            <input type="text" name="paternal_name" class="form-control" placeholder="Perez" required>
+                            <input type="text" name="paternal_surname" class="form-control" placeholder="Perez" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="full_name">Apellido Materno</label>
-                            <input type="text" name="maternal_name" class="form-control" placeholder="Ortiz" >
+                            <input type="text" name="maternal_surname" class="form-control" placeholder="Ortiz" >
                         </div>
                     </div>
                     <div class="row">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <input type="submit" class="btn btn-primary btn-save-people" value="Guardar">
+                    <input type="submit" class="btn btn-primary btn-save-person" value="Guardar">
                 </div>
             </div>
         </div>
