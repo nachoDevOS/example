@@ -55,7 +55,25 @@ class PermissionsTableSeeder extends Seeder
 
         // Administracion
 
-        Permission::generateFor('people');
+        // Permission::generateFor('people');
+
+        $permissions = [
+            'browse_people' => 'Ver lista de personas',
+            'read_people' => 'Ver detalles de una persona',
+            'edit_people' => 'Editar información de personas',
+            'add_people' => 'Agregar nuevas personas',
+            'delete_people' => 'Eliminar personas',
+        ];
+
+        foreach ($permissions as $key => $description) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'description'=> $description,
+                'table_name' => 'people',
+            ]);
+        }
+
+     
 
 
 

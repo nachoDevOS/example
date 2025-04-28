@@ -69,6 +69,7 @@
                                                 <li>
                                                     <input type="checkbox" id="permission-{{$perm->id}}" name="permissions[{{$perm->id}}]" class="the-permission" value="{{$perm->id}}" @if(in_array($perm->key, $role_permissions)) checked @endif>
                                                     <label for="permission-{{$perm->id}}">{{\Illuminate\Support\Str::title(str_replace('_', ' ', $perm->key))}}</label>
+                                                    <label for="permission-{{$perm->id}}"><small>{{$perm->description?' => '.$perm->description:''}}</small></label>
                                                 </li>
                                             @endforeach
                                         </ul>
