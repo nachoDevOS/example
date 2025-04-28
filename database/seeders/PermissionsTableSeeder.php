@@ -21,8 +21,11 @@ class PermissionsTableSeeder extends Seeder
         
         Permission::firstOrCreate([
             'key'        => 'browse_admin',
+            'keyDescription'=>'vista de acceso al sistema',
             'table_name' => 'admin',
+            'tableDescription'=>'Panel del Sistema'
         ]);
+
         $keys = [
             // 'browse_admin',
             'browse_bread',
@@ -39,8 +42,6 @@ class PermissionsTableSeeder extends Seeder
             ]);
         }
 
-        // Permission::generateFor('menus');
-
         Permission::generateFor('menus');
 
         Permission::generateFor('roles');
@@ -53,10 +54,9 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('categories');
         Permission::generateFor('pages');
 
+        
+
         // Administracion
-
-        // Permission::generateFor('people');
-
         $permissions = [
             'browse_people' => 'Ver lista de personas',
             'read_people' => 'Ver detalles de una persona',
