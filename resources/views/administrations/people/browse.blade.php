@@ -44,7 +44,7 @@
                                     </select> registros</label>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2" style="margin-bottom: 10px">
                                 <input type="text" id="input-search" placeholder="🔍 Buscar..." class="form-control">
                             </div>
                         </div>
