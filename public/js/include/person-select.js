@@ -43,30 +43,6 @@ var personSelected;
                     $('#input-dni').val(window.personSelected.ci ? window.personSelected.ci : '');
                 }
             });
-
-            // $('#create-form-person').submit(function(e){
-            //     e.preventDefault();
-            //     $('.btn-save-people').attr('disabled', true);
-            //     $('.btn-save-people').val('Guardando...');
-
-            //     let form = $(this);
-                
-            //     // $.post($(this).attr('action'), $(this).serialize(), function(data){
-            //     $.post(form.attr('action'), $(this).serialize(), function(data){
-            //         if(data.people.id){
-            //             toastr.success('Usuario creado', 'Éxito');
-            //             // $(this).trigger('reset');
-            //             form[0].reset();
-            //         }else{
-            //             toastr.error(data.error, 'Error');
-            //         }
-            //     })
-            //     .always(function(){
-            //         $('.btn-save-people').attr('disabled', false);
-            //         $('.btn-save-people').val('Guardar');
-            //         $('#modal-create-person').modal('hide');
-            //     });
-            // });
         });
 
         function formatPersonResult(option){

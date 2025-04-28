@@ -104,7 +104,7 @@
                             }
 
                             @endphp
-                            <div class="form-group">
+                            <div class="form-group" style="display: none">
                                 <label for="locale">{{ __('voyager::generic.locale') }}</label>
                                 <select class="form-control select2" id="locale" name="locale">
                                     @foreach (Voyager::getLocales() as $locale)
@@ -159,100 +159,12 @@
 @stop
 
 @section('javascript')
+
+    <script src="{{ asset('js/include/person-select.js') }}"></script>
+    <script src="{{ asset('js/include/person-register.js') }}"></script>
     <script>
         $('document').ready(function () {
             $('.toggleswitch').bootstrapToggle();
         });
-    </script>
-
-    <script>
-        var peopleSelected;
-        $(document).ready(function(){
-            $('#select-person_id').select2({
-                placeholder: '<i class="fa fa-search"></i> Buscar...',
-                escapeMarkup : function(markup) {
-                    return markup;
-                },
-                language: {
-                    inputTooShort: function (data) {
-                        return `Por favor ingrese ${data.minimum - data.input.length} o más caracteres`;
-                    },
-                    noResults: function () {
-                        return `<i class="far fa-frown"></i> No hay resultados encontrados`;
-                    }
-                },
-                quietMillis: 250,
-                minimumInputLength: 2,
-                ajax: {
-                    url: "{{ url('admin/ajax/personList') }}",        
-                    processResults: function (data) {
-                        let results = [];
-                        data.map(data =>{
-                            results.push({
-                                ...data,
-                                disabled: false
-                            });
-                        });
-                        return {
-                            results
-                        };
-                    },
-                    cache: true
-                },
-                templateResult: formatPersonResult,
-                templateSelection: (opt) => {
-                    personSelected = opt;
-                    return opt.first_name?opt.first_name+' '+ (opt.middle_name?opt.middle_name+' ':'')+opt.paternal_surname+(opt.maternal_surname?' '+opt.maternal_surname:''):'<i class="fa fa-search"></i> Buscar... ';
-                }
-            }).change(function(){
-            });
-
-            $('#form-create-person').submit(function(e){
-                e.preventDefault();
-                $('.btn-save-people').attr('disabled', true);
-                $('.btn-save-people').val('Guardando...');
-
-                let form = $(this);
-                
-                // $.post($(this).attr('action'), $(this).serialize(), function(data){
-                $.post(form.attr('action'), $(this).serialize(), function(data){
-                    if(data.people.id){
-                        toastr.success('Usuario creado', 'Éxito');
-                        // $(this).trigger('reset');
-                        form[0].reset();
-                    }else{
-                        toastr.error(data.error, 'Error');
-                    }
-                })
-                .always(function(){
-                    $('.btn-save-people').attr('disabled', false);
-                    $('.btn-save-people').val('Guardar');
-                    $('#modal-create-person').modal('hide');
-                });
-            });
-        });
-
-        function formatPersonResult(option){
-            // Si está cargando mostrar texto de carga
-            if (option.loading) {
-                return '<span class="text-center"><i class="fas fa-spinner fa-spin"></i> Buscando...</span>';
-            }
-
-            let image = "{{ asset('image/default.jpg') }}";
-                if(option.image){
-                    image = "{{ asset('storage') }}/"+option.image.replace('.', '-cropped.');
-                }
-            return $(`  
-                        <div style="display: flex">
-                            <div style="margin: 0px 10px">
-                                <img src="${image}" width="50px" />
-                            </div>
-                            <div>
-                                <small>CI: </small><b style="font-size: 15px; color: black">${option.ci?option.ci:'No definido'}</b><br>
-                                <b style="font-size: 15px; color: black">${option.first_name} ${option.middle_name?option.middle_name:''} ${option.paternal_surname} ${option.maternal_surname?option.maternal_surname:''}</b>
-                            </div>
-                        </div>
-                        `);
-        }
     </script>
 @stop

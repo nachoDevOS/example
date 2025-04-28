@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use Illuminate\Support\Facades\DB;
 
 class AjaxController extends Controller
 {
@@ -31,5 +32,17 @@ class AjaxController extends Controller
                         ->where('deleted_at', null)
                         ->get();
         return response()->json($data);
+    }
+
+    public function personStore(Request $request){
+        DB::beginTransaction();
+        try {
+            $person =Person::create($request->all());
+            DB::commit();
+            return response()->json(['person' => $person]);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json(['error' => $th->getMessage()], 500);
+        }
     }
 }

@@ -85,9 +85,15 @@ class UserController extends Controller
         try {
             $user = User::where('id', $id)->first();
             $user->update([
-                'role_id' => $request->role_id,
                 'status'=> $request->status?1:0,
             ]);
+            
+            if($request->role_id)
+            {
+                $user->update([
+                    'role_id' => $request->role_id,
+                ]);
+            }
             if($request->password)
             {
                 $user->update([

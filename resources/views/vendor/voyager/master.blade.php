@@ -26,6 +26,14 @@
     <link rel="stylesheet" href="{{ asset('css/style/span.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/style/a.css') }}"> --}}
 
+
+    {{-- Para person-select --}}
+    <script>
+        window.personListUrl = "{{ url('admin/ajax/personList') }}";
+        window.defaultImage = "{{ asset('image/default.jpg') }}";
+        window.storagePath = "{{ asset('storage') }}/";
+    </script>
+
     
 
     <!-- Favicon -->

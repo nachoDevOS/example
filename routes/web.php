@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['loggin']], function () {
 
 
     Route::get('ajax/personList', [AjaxController::class, 'personList']);
-    // Route::post('people/store', [AjaxController::class, 'peopleStore']);
+    Route::post('ajax/person/store', [AjaxController::class, 'personStore']);
 
 });
 
