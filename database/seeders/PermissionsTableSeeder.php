@@ -68,8 +68,9 @@ class PermissionsTableSeeder extends Seeder
         foreach ($permissions as $key => $description) {
             Permission::firstOrCreate([
                 'key'        => $key,
-                'description'=> $description,
+                'keyDescription'=> $description,
                 'table_name' => 'people',
+                'tableDescription'=>'Personas'
             ]);
         }
 

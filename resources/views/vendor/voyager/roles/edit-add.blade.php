@@ -64,12 +64,13 @@
                                     <li>
                                         <input type="checkbox" id="{{$table}}" class="permission-group">
                                         <label for="{{$table}}"><strong>{{\Illuminate\Support\Str::title(str_replace('_',' ', $table))}}</strong></label>
+                                        <small style="font-size: 15px">{{$permission->first()->tableDescription?'   "'.$permission->first()->tableDescription.'"':''}}</small>
                                         <ul>
                                             @foreach($permission as $perm)
                                                 <li>
                                                     <input type="checkbox" id="permission-{{$perm->id}}" name="permissions[{{$perm->id}}]" class="the-permission" value="{{$perm->id}}" @if(in_array($perm->key, $role_permissions)) checked @endif>
                                                     <label for="permission-{{$perm->id}}">{{\Illuminate\Support\Str::title(str_replace('_', ' ', $perm->key))}}</label>
-                                                    <label for="permission-{{$perm->id}}"><small>{{$perm->description?' => '.$perm->description:''}}</small></label>
+                                                    <label for="permission-{{$perm->id}}"><small>{{$perm->keyDescription?' => '.$perm->keyDescription:''}}</small></label>
                                                 </li>
                                             @endforeach
                                         </ul>
