@@ -340,9 +340,7 @@
                         </div>
                         <div class="form-group">
                             <textarea name="deleteObservation" class="form-control" rows="4" placeholder="Describa el motivo de la eliminación..." required></textarea>
-                        </div>{{-- <div class="form-group">
-                            <textarea name="deleteObservation" class="form-control" rows="4" placeholder="Describa el motivo de la eliminación..." required></textarea>
-                        </div> --}}
+                        </div>
                         <label class="checkbox-inline">
                             <input type="checkbox" required>Confirmar eliminación..!
                         </label>
