@@ -21,6 +21,8 @@ trait RegistersUserEvents
                 $user = Auth::user();
                 $model->deleteUser_id = $user->id;
                 $model->deleteRole = $user->role->name;
+                $model->deleteObservation = request()->input('deleteObservation');
+
                 $model->save();
             }
         });
