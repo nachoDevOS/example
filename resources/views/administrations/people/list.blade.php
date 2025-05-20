@@ -20,7 +20,7 @@
                     <td>
                         <table>
                             @php
-                                $image = asset('image/default.jpg');
+                                $image = asset('images/default.jpg');
                                 if($item->image){
                                     $image = asset('storage/'.str_replace('.', '-cropped.', $item->image));
                                 }
