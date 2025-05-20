@@ -19,7 +19,7 @@
                         @if($item->person_id)
                             <table>
                                 @php
-                                    $image = asset('image/default.jpg');
+                                    $image = asset('images/default.jpg');
                                     if($item->person->image){
                                         $image = asset('storage/'.str_replace('.', '-cropped.', $item->person->image));
                                     }
@@ -70,7 +70,7 @@
                     <tr>
                         <td colspan="6">
                             <h5 class="text-center" style="margin-top: 50px">
-                                <img src="{{ asset('image/empty.png') }}" width="120px" alt="" style="opacity: 0.8">
+                                <img src="{{ asset('images/empty.png') }}" width="120px" alt="" style="opacity: 0.8">
                                 <br><br>
                                 No hay resultados
                             </h5>

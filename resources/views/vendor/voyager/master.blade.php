@@ -30,7 +30,7 @@
     {{-- Para person-select --}}
     <script>
         window.personListUrl = "{{ url('admin/ajax/personList') }}";
-        window.defaultImage = "{{ asset('image/default.jpg') }}";
+        window.defaultImage = "{{ asset('images/default.jpg') }}";
         window.storagePath = "{{ asset('storage') }}/";
     </script>
 
