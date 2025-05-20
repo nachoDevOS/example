@@ -64,8 +64,6 @@ class UserController extends Controller
                 'email' => $request->email,
                 'avatar' => 'users/default.png',
                 'password' => bcrypt($request->password),
-                'registerUser_id'=>Auth::user()->id,
-                'registerRole'=>Auth::user()->role->name,
                 // 'settings' => '{"locale":"es"}'
 
             ]);
@@ -115,12 +113,7 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $user = User::where('id', $id)->where('deleted_at', null)->first();
-            $user->update([
-                'deleted_at' => Carbon::now(),
-                'deleteUser_id'=>Auth::user()->id,
-                'deleteRole'=>Auth::user()->role->name,
-                'deleteObservation'=>$request->deleteObservation
-            ]);
+            $user->delete();
             DB::commit();
             return redirect()->route('voyager.users.index')->with(['message' => 'Eliminado exitosamente.', 'alert-type' => 'success']);
         } catch (\Exception $e) {

@@ -14,10 +14,6 @@ class AjaxController extends Controller
 
     public function personList(){
         $q = request('q');
-        // $data = Person::whereRaw('(ci like "%'.$q.'%" or first_name like "%'.$q.'%" or last_name like "%'.$q.'%" or CONCAT(first_name," " , last_name) like "%'.$q.'%" )')
-        //     ->where('deleted_at', null)
-        //     ->get();
-
         $data = Person::OrWhereRaw($q ? "ci like '%$q%'" : 1)
                         ->OrWhereRaw($q ? "phone like '%$q%'" : 1)
                         ->OrWhereRaw($q ? "first_name like '%$q%'" : 1)

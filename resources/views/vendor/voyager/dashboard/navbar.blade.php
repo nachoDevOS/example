@@ -5,7 +5,7 @@
                 <span class="hamburger-inner"></span>
             </button>
             @section('breadcrumbs')
-            <ol class="breadcrumb hidden-xs">
+            {{-- <ol class="breadcrumb hidden-xs">
                 @php
                 $segments = array_filter(explode('/', str_replace(route('voyager.dashboard'), '', Request::url())));
                 $url = route('voyager.dashboard');
@@ -29,10 +29,20 @@
                         @endif
                     @endforeach
                 @endif
-            </ol>
+            </ol> --}}
             @show
         </div>
         <ul class="nav navbar-nav @if (__('voyager::generic.is_rtl') == 'true') navbar-left @else navbar-right @endif">
+            @php
+                $user = App\Models\User::where('id', Auth::user()->id)->first();
+                if($user->person)
+                {
+                    if($user->person->image)
+                    {
+                        $user_avatar = asset('storage/'.str_replace('.', '-cropped.', $user->person->image));
+                    }
+                }
+            @endphp
             <li class="dropdown profile">
                 <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button"
                    aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span
