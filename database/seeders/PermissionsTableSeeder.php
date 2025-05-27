@@ -74,6 +74,25 @@ class PermissionsTableSeeder extends Seeder
             ]);
         }
 
+
+        // Parametros
+        $permissions = [
+            'browse_item_sales' => 'Ver lista de productos en ventas',
+            'read_item_sales' => 'Ver detalles de productos en ventas',
+            'edit_item_sales' => 'Editar información de productos en ventas',
+            'add_item_sales' => 'Agregar nuevos productos en ventas',
+            'delete_item_sales' => 'Eliminar productos en ventas',
+        ];
+
+        foreach ($permissions as $key => $description) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'keyDescription'=> $description,
+                'table_name' => 'item_sales',
+                'tableDescription'=>'Productos / Items en Venta'
+            ]);
+        }
+
      
 
 

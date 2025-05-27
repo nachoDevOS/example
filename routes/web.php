@@ -5,6 +5,8 @@ use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\ItemSaleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['loggin']], function () {
 
     Route::get('people', [PersonController::class, 'index'])->name('voyager.people.index');
     Route::get('people/ajax/list', [PersonController::class, 'list']);
+
+
+    Route::get('item-sales', [ItemSaleController::class, 'index'])->name('voyager.item-sales.index');
+    Route::get('item-sales/ajax/list', [ItemSaleController::class, 'list']);
+    Route::get('item-sales/{id}', [ItemSaleController::class, 'show'])->name('voyager.item-sales.show');
+
+
+
 
 
     Route::get('users/ajax/list', [UserController::class, 'list']);
