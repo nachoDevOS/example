@@ -23,10 +23,11 @@
 
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-danger pull-right delete-confirm" value="Sí, eliminar">
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-danger btn-form-delete" value="Sí, eliminar">
                 </div>
             </div>
         </div>
     </div>
 </form>
+
