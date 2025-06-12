@@ -15,7 +15,8 @@ class PersonController extends Controller
 
     public function index()
     {
-        // return User::all();
+        $this->custom_authorize('browse_people');
+
         return view('administrations.people.browse');
     }
     

@@ -54,17 +54,6 @@ class SettingsTableSeeder extends Seeder
             ),
             3 => 
             array (
-                'id' => 4,
-                'key' => 'site..google_analytics_tracking_id',
-                'display_name' => 'ID de rastreo de Google Analytics',
-                'value' => NULL,
-                'details' => '',
-                'type' => 'text',
-                'order' => 4,
-                'group' => 'Site',
-            ),
-            4 => 
-            array (
                 'id' => 5,
                 'key' => 'admin.bg_image',
                 'display_name' => 'Imagen de fondo del administrador',
@@ -74,7 +63,7 @@ class SettingsTableSeeder extends Seeder
                 'order' => 5,
                 'group' => 'Admin',
             ),
-            5 => 
+            4 => 
             array (
                 'id' => 6,
                 'key' => 'admin.title',
@@ -85,7 +74,7 @@ class SettingsTableSeeder extends Seeder
                 'order' => 1,
                 'group' => 'Admin',
             ),
-            6 => 
+            5 => 
             array (
                 'id' => 7,
                 'key' => 'admin.description',
@@ -96,7 +85,7 @@ class SettingsTableSeeder extends Seeder
                 'order' => 2,
                 'group' => 'Admin',
             ),
-            7 => 
+            6 => 
             array (
                 'id' => 8,
                 'key' => 'admin.loader',
@@ -107,7 +96,7 @@ class SettingsTableSeeder extends Seeder
                 'order' => 3,
                 'group' => 'Admin',
             ),
-            8 => 
+            7 => 
             array (
                 'id' => 9,
                 'key' => 'admin.icon_image',
@@ -118,7 +107,7 @@ class SettingsTableSeeder extends Seeder
                 'order' => 4,
                 'group' => 'Admin',
             ),
-            9 => 
+            8 => 
             array (
                 'id' => 11,
                 'key' => 'system.development',
@@ -126,7 +115,73 @@ class SettingsTableSeeder extends Seeder
                 'value' => '0',
                 'details' => NULL,
                 'type' => 'checkbox',
-                'order' => 6,
+                'order' => 1,
+                'group' => 'System',
+            ),
+            9 => 
+            array (
+                'id' => 12,
+                'key' => 'contact.name',
+                'display_name' => 'Nombre',
+                'value' => 'Ignacio Molina Guzman',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 1,
+                'group' => 'Contact',
+            ),
+            10 => 
+            array (
+                'id' => 13,
+                'key' => 'contact.phone',
+                'display_name' => 'Celular',
+                'value' => '+59167285914',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 2,
+                'group' => 'Contact',
+            ),
+            11 => 
+            array (
+                'id' => 14,
+                'key' => 'contact.email',
+                'display_name' => 'Email',
+                'value' => 'ignaciomolinaguzman20@gmail.com',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 3,
+                'group' => 'Contact',
+            ),
+            12 => 
+            array (
+                'id' => 15,
+                'key' => 'contact.address',
+                'display_name' => 'Dirección',
+                'value' => 'Nueva Trinidad',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 4,
+                'group' => 'Contact',
+            ),
+            13 => 
+            array (
+                'id' => 16,
+                'key' => 'system.payment-alert',
+                'display_name' => 'Alerta de Pago',
+                'value' => '1',
+                'details' => NULL,
+                'type' => 'checkbox',
+                'order' => 3,
+                'group' => 'System',
+            ),
+            14 => 
+            array (
+                'id' => 21,
+                'key' => 'system.payment-date',
+                'display_name' => 'Fecha de Limite de Pago',
+                'value' => '2025-06-10',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 2,
                 'group' => 'System',
             ),
         ));

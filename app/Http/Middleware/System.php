@@ -22,9 +22,6 @@ class System
                 return redirect('development');
             }
 
-            // if (setting('system.non-payment-alert') == 'screen lock' && Auth::user()->role_id != 1) {
-            //     return redirect()->route('errors', 'suspended');
-            // }
         }
 
         return $next($request);
