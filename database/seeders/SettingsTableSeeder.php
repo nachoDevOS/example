@@ -120,17 +120,6 @@ class SettingsTableSeeder extends Seeder
             ),
             9 => 
             array (
-                'id' => 10,
-                'key' => 'admin.google_analytics_client_id',
-            'display_name' => 'ID de Cliente para Google Analytics (usado para el tablero de administrador)',
-                'value' => NULL,
-                'details' => '',
-                'type' => 'text',
-                'order' => 1,
-                'group' => 'Admin',
-            ),
-            10 => 
-            array (
                 'id' => 11,
                 'key' => 'dev.development',
                 'display_name' => 'Sistema en Desarrollo 503',
