@@ -28,7 +28,7 @@
                     En estos momentos el sistema se encuentra en mantenimiento, por favor intente mas tardes <br>Gracias por su comprensión
 
                 </p>
-                <img src="{{asset('image/errors/503.gif')}}" width="250" height="200" border="0">
+                <img src="{{asset('images/errors/503.gif')}}" width="250" height="200" border="0">
                 <br>
 
                 <a href="{{ url('/') }}" class="btn btn-primary">Volver a intentar</a>

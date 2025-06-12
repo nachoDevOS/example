@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         
 
         'loggin' => \App\Http\Middleware\Loggin::class,
+        'system' => \App\Http\Middleware\System::class,
+
 
     ];
 }

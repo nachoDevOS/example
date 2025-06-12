@@ -22,9 +22,9 @@ class SettingsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'key' => 'site.title',
+                'key' => 'site..title',
                 'display_name' => 'Título del sitio',
-                'value' => 'Título del sitio',
+                'value' => NULL,
                 'details' => '',
                 'type' => 'text',
                 'order' => 1,
@@ -33,9 +33,9 @@ class SettingsTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'key' => 'site.description',
+                'key' => 'site..description',
                 'display_name' => 'Descripción del sitio',
-                'value' => 'Descripción del sitio',
+                'value' => NULL,
                 'details' => '',
                 'type' => 'text',
                 'order' => 2,
@@ -55,7 +55,7 @@ class SettingsTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 4,
-                'key' => 'site.google_analytics_tracking_id',
+                'key' => 'site..google_analytics_tracking_id',
                 'display_name' => 'ID de rastreo de Google Analytics',
                 'value' => NULL,
                 'details' => '',
@@ -121,13 +121,13 @@ class SettingsTableSeeder extends Seeder
             9 => 
             array (
                 'id' => 11,
-                'key' => 'dev.development',
-                'display_name' => 'Sistema en Desarrollo 503',
+                'key' => 'system.development',
+                'display_name' => 'Sistema en Mantenimiento 503',
                 'value' => '0',
                 'details' => NULL,
                 'type' => 'checkbox',
                 'order' => 6,
-                'group' => 'Dev',
+                'group' => 'System',
             ),
         ));
         
