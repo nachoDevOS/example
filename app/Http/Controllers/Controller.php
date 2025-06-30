@@ -20,12 +20,20 @@ class Controller extends BaseController
 
     public function payment_alert()
     {
-        $date = setting('system.payment-date');
-        $now = new DateTime();
-        $value= '';
-        $d = DateTime::createFromFormat('Y-m-d H:i:s', $date . ' 23:59:59');
+        $soliciondigital = new SolucionDigitalController();
+        $data = $soliciondigital->settings_code();
+        $date = $data->finish;
 
-        if($d && $d->format('Y-m-d') === $date)
+        $now = new DateTime();
+        $value= null;
+        $d = DateTime::createFromFormat('Y-m-d H:i:s', $date.' 23:59:59');
+    
+        if($data->type == 'Demo')
+        {
+            return $value;
+        }
+
+        if($d && $d->format('Y-m-d') === $date )
         {
             if($now > $d)
             {

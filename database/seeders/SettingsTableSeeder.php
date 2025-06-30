@@ -121,64 +121,20 @@ class SettingsTableSeeder extends Seeder
             9 => 
             array (
                 'id' => 12,
-                'key' => 'contact.name',
-                'display_name' => 'Nombre',
-                'value' => 'Ignacio Molina Guzman',
-                'details' => NULL,
-                'type' => 'text',
-                'order' => 1,
-                'group' => 'Contact',
-            ),
-            10 => 
-            array (
-                'id' => 13,
-                'key' => 'contact.phone',
-                'display_name' => 'Celular',
-                'value' => '+59167285914',
-                'details' => NULL,
-                'type' => 'text',
-                'order' => 2,
-                'group' => 'Contact',
-            ),
-            11 => 
-            array (
-                'id' => 14,
-                'key' => 'contact.email',
-                'display_name' => 'Email',
-                'value' => 'ignaciomolinaguzman20@gmail.com',
-                'details' => NULL,
-                'type' => 'text',
-                'order' => 3,
-                'group' => 'Contact',
-            ),
-            12 => 
-            array (
-                'id' => 15,
-                'key' => 'contact.address',
-                'display_name' => 'Dirección',
-                'value' => 'Nueva Trinidad',
-                'details' => NULL,
-                'type' => 'text',
-                'order' => 4,
-                'group' => 'Contact',
-            ),
-            13 => 
-            array (
-                'id' => 16,
                 'key' => 'system.payment-alert',
                 'display_name' => 'Alerta de Pago',
                 'value' => '1',
                 'details' => NULL,
                 'type' => 'checkbox',
-                'order' => 3,
+                'order' => 1,
                 'group' => 'System',
             ),
-            14 => 
+            10 => 
             array (
-                'id' => 21,
-                'key' => 'system.payment-date',
-                'display_name' => 'Fecha de Limite de Pago',
-                'value' => '2025-06-10',
+                'id' => 13,
+                'key' => 'system.code',
+                'display_name' => 'Código',
+                'value' => 'code-1',
                 'details' => NULL,
                 'type' => 'text',
                 'order' => 2,

@@ -26,7 +26,8 @@ Route::get('/', function () {
     return redirect('admin');
 });
 
-Route::get('/development', [ErrorController::class , 'error503'])->name('development');
+Route::get('/info/{id?}', [ErrorController::class , 'error'])->name('errors');
+// Route::get('/development', [ErrorController::class , 'error503'])->name('development');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['loggin', 'system']], function () {
     Voyager::routes();
@@ -53,7 +54,7 @@ Route::get('/admin/clear-cache', function() {
     Artisan::call('optimize:clear');
 
     // Artisan::call('db:seed', ['--class' => 'UpdateBreadSeeder']);
-    Artisan::call('db:seed', ['--class' => 'UpdatePermissionsSeeder']);
+    // Artisan::call('db:seed', ['--class' => 'UpdatePermissionsSeeder']);
     
     return redirect('/admin/profile')->with(['message' => 'Cache eliminada.', 'alert-type' => 'success']);
 })->name('clear.cache');

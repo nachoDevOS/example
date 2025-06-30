@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ Voyager::setting("admin.title") }} - Permiso denegado</title>
+    <title>{{ Voyager::setting("admin.title") }} - Error de conexión</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Favicon -->
     <?php $admin_favicon = Voyager::setting('admin.icon_image', ''); ?>
@@ -32,48 +32,57 @@
 <body>
     <div class="d-flex align-items-center justify-content-center vh-100">
         <div class="text-center">
-            <h1 class="display-1 fw-bold">403</h1>
-            <p class="fs-3"> <span class="text-danger">Acceso denegado!</span> No tienes permisos suficientes.</p>
+            <h1 class="display-1 fw-bold">500</h1>
+            <p class="fs-3"> <span class="text-danger">Error!</span> Problemas de conexión con el servidor.</p>
             <p class="lead">
-                Tu cuenta no tiene los privilegios necesarios para acceder a esta página o realizar esta acción.
+                No se ha podido establecer conexión con el servidor. Por favor, intente nuevamente más tarde.
             </p>
             
             <div class="error-details text-start">
                 <p><strong>Posibles causas:</strong></p>
                 <ul>
-                    <li>Tu cuenta no tiene asignados los permisos necesarios</li>
-                    <li>Estás intentando acceder a un área restringida</li>
-                    <li>Tu rol de usuario no permite esta acción</li>
-                    <li>La página requiere autenticación adicional</li>
+                    <li>El servidor no está respondiendo</li>
+                    <li>Problemas de red o conexión a internet</li>
+                    <li>El servidor está sobrecargado</li>
+                    <li>Problemas temporales del servicio</li>
                 </ul>
                 <p><strong>¿Qué puede hacer?</strong></p>
                 <ul>
-                    <li>Verificar que has iniciado sesión correctamente</li>
-                    <li>Contactar al administrador para solicitar los permisos</li>
-                    <li>Volver a la página anterior o al inicio</li>
+                    <li>Verificar su conexión a internet</li>
+                    <li>Recargar la página después de unos minutos</li>
+                    <li>Contactar al administrador si el problema persiste</li>
                 </ul>
             </div>
             
-            {{-- <img src="{{asset('images/errors/503.gif')}}" width="250" height="200" border="0" alt="Permiso denegado"> --}}
+            <img src="{{asset('images/errors/connection-error.gif')}}" width="250" height="200" border="0" alt="Error de conexión">
             <br>
             
             <div class="d-flex justify-content-center gap-3 mt-3">
-                <a href="{{ url('/') }}" class="btn btn-primary">Volver al inicio</a>
-                <a href="javascript:history.back()" class="btn btn-secondary">
-                    <i class="bi bi-arrow-left"></i> Volver atrás
-                </a>
+                {{-- <a href="{{ url('/') }}" class="btn btn-primary">Volver al inicio</a>
+                <button onclick="window.location.reload()" class="btn btn-secondary refresh-btn">
+                    <i class="bi bi-arrow-clockwise"></i> Reintentar
+                </button> --}}
+
+                <a href="{{ url('/') }}" class="btn btn-secondary"> <i class="bi bi-arrow-clockwise"></i>Reintentar</a>
             </div>
             
             <p class="mt-3 text-muted small">
-                Si crees que esto es un error, por favor contacta al administrador del sistema.
+                Si el problema persiste, por favor contacte al soporte técnico.
                 <br>
-                Código de error: ERR_ACCESS_DENIED
+                Código de error: ERR_CONNECTION_FAILED
             </p>
         </div>
     </div>
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    
+    <script>
+        // Intenta reconectar automáticamente cada 30 segundos
+        setTimeout(function() {
+            window.location.reload();
+        }, 30000);
+    </script>
 </body>
 
 </html>
