@@ -10,6 +10,6 @@ class SolucionDigitalController extends Controller
 {
     public function settings_code() 
     {
-        return DB::connection('solucionDigital')->table('web_systems')->where('code', setting('system.code'))->first();
+        return DB::connection('solucionDigital')->table('web_systems')->where('code', setting('system.code-system'))->first();
     }
 }
