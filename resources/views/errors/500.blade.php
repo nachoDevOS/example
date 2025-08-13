@@ -63,7 +63,7 @@
                     <i class="bi bi-arrow-clockwise"></i> Reintentar
                 </button> --}}
 
-                <a href="{{ url('/') }}" class="btn btn-secondary"> <i class="bi bi-arrow-clockwise"></i>Reintentar</a>
+                <a href="{{ url('/') }}" class="btn btn-secondary"> <i class="bi bi-arrow-clockwise"></i> Reintentar</a>
             </div>
             
             <p class="mt-3 text-muted small">

@@ -67,11 +67,13 @@
             <br>
             
             <div class="d-flex justify-content-center gap-3 mt-3">
-                <button onclick="window.location.reload()" class="btn btn-primary refresh-btn">
+                {{-- <button onclick="window.location.reload()" class="btn btn-primary refresh-btn">
                     <i class="bi bi-arrow-clockwise"></i> Reintentar
-                </button>
-                <a href="{{ url('/') }}" class="btn btn-secondary">Volver al inicio</a>
+                </button> --}}
+                <a href="{{ url('/') }}" class="btn btn-secondary"> <i class="bi bi-arrow-clockwise"></i> Reintentar</a>
+
             </div>
+
             
             <p class="mt-3 text-muted small">
                 Disculpe las molestias ocasionadas. Para consultas urgentes, contacte al soporte técnico.

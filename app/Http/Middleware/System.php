@@ -22,7 +22,7 @@ class System
     {
         if (Auth::user()) {
             if(setting('system.development') && !auth()->user()->hasRole('admin')){
-                return redirect('development');
+                return redirect()->route('errors', ['id'=>503]);
             }
         }
 
@@ -36,7 +36,7 @@ class System
         else
         {
             $payment = new Controller();
-            if($payment->payment_alert() == 'finalizado')
+            if($payment->payment_alert() == 'finalizado') //si el metodo del controlador payment_alert() retorna finalizado, significa que el sistema no esta vigente
             {
                 $blockedMethods = ['POST', 'PUT', 'PATCH', 'DELETE'];
                 $allowedRoutes = ['admin/login', 'admin/logout', 'admin/settings']; // Rutas permitidas

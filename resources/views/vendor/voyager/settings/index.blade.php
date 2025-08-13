@@ -236,8 +236,12 @@
 
                 <div class="page-content settings container-fluid">
                     <ul class="nav nav-tabs">
+                        {{-- @php
+                            dump($settings);
+                        @endphp --}}
                         @foreach($settings as $group => $setting)
-                            @if ($group != 'Site' && $group != 'System' && $group != 'Contact')
+                        
+                            @if ( $group != 'System' && $group != 'Whatsapp' && $group != 'Servidor Imagen')
                                 <li @if($group == $active) class="active" @endif>
                                     <a data-toggle="tab" href="#{{ \Illuminate\Support\Str::slug($group) }}">{{ $group }}</a>
                                 </li>
@@ -253,7 +257,7 @@
 
                     <div class="tab-content">
                         @foreach($settings as $group => $group_settings)
-                            <div id="{{ \Illuminate\Support\Str::slug($group) }}" class="tab-pane fade in @if (Auth::user()->role_id != 1 && $group == 'Admin') active @else @if(Auth::user()->role_id == 1 && $group == $active) active @endif @endif">
+                            <div id="{{ \Illuminate\Support\Str::slug($group) }}" class="tab-pane fade in @if (Auth::user()->role_id != 1 && $group == 'Site') active @else @if(Auth::user()->role_id == 1 && $group == $active) active @endif @endif">
                                 @foreach($group_settings as $setting)
                                     <div class="panel-heading">
                                         <h3 class="panel-title">

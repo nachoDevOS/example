@@ -132,13 +132,123 @@ class SettingsTableSeeder extends Seeder
             10 => 
             array (
                 'id' => 13,
-                'key' => 'system.code',
-                'display_name' => 'Código',
+                'key' => 'system.code-system',
+                'display_name' => 'Código del Sistema',
                 'value' => 'code-1',
                 'details' => NULL,
                 'type' => 'text',
                 'order' => 2,
                 'group' => 'System',
+            ),
+            11 => 
+            array (
+                'id' => 14,
+                'key' => 'whatsapp.servidores',
+                'display_name' => 'Servidor',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 6,
+                'group' => 'Whatsapp',
+            ),
+            12 => 
+            array (
+                'id' => 16,
+                'key' => 'whatsapp.session',
+                'display_name' => 'Session',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 7,
+                'group' => 'Whatsapp',
+            ),
+            13 => 
+            array (
+                'id' => 17,
+                'key' => 'redes-sociales.whatsapp',
+                'display_name' => 'Whatsapp',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 8,
+                'group' => 'Redes Sociales',
+            ),
+            14 => 
+            array (
+                'id' => 18,
+                'key' => 'redes-sociales.facebook',
+                'display_name' => 'Facebook',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 9,
+                'group' => 'Redes Sociales',
+            ),
+            15 => 
+            array (
+                'id' => 19,
+                'key' => 'redes-sociales.instagram',
+                'display_name' => 'Instagram',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 10,
+                'group' => 'Redes Sociales',
+            ),
+            16 => 
+            array (
+                'id' => 20,
+                'key' => 'redes-sociales.tiktok',
+                'display_name' => 'Tik Tok',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 11,
+                'group' => 'Redes Sociales',
+            ),
+            17 => 
+            array (
+                'id' => 21,
+                'key' => 'redes-sociales.telegram',
+                'display_name' => 'Telegram',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 12,
+                'group' => 'Redes Sociales',
+            ),
+            18 => 
+            array (
+                'id' => 22,
+                'key' => 'redes-sociales.youtube',
+                'display_name' => 'YouTube',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 14,
+                'group' => 'Redes Sociales',
+            ),
+            19 => 
+            array (
+                'id' => 23,
+                'key' => 'redes-sociales.twitter',
+                'display_name' => 'Twitter',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 13,
+                'group' => 'Redes Sociales',
+            ),
+            20 => 
+            array (
+                'id' => 24,
+                'key' => 'servidor-imagen.image-from-url',
+                'display_name' => 'Servidor',
+                'value' => '',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 15,
+                'group' => 'Servidor Imagen',
             ),
         ));
         

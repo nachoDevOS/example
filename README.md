@@ -10,18 +10,17 @@
 ## Laravel Template Voyager Example
 
 ## Instalación
-- composer install
-- cp .env.example .env
-- php artisan example:install
-- chmod -R 777 storage bootstrap/cache
-
-## Actualización
-sudo chmod -R 777 storage bootstrap/cache
+```
+composer install
+cp .env.example .env
+php artisan news:install
+sudo chmod -R 775 storage bootstrap/cache
+chown -R www-data storage bootstrap/cache
+```
 
 ## Versión de Laravel
-Laravel Framework 9.52.16
+Laravel Framework 10.0.0
 
-## PHP
-PHP 8.0.30
-
-# fast-food
+## Requisistos
+- php >= 8.1
+- Extenciones **php-mbstring php-intl php-dom php-gd php-xml php-zip php-curl php-fpm php-mysql**

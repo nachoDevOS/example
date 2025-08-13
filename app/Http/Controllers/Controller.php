@@ -28,14 +28,14 @@ class Controller extends BaseController
         $value= null;
         $d = DateTime::createFromFormat('Y-m-d H:i:s', $date.' 23:59:59');
     
-        if($data->type == 'Demo')
+        if($data->type == 'Demo')// si es demo no tiene restrincion
         {
             return $value;
         }
 
         if($d && $d->format('Y-m-d') === $date )
         {
-            if($now > $d)
+            if($now > $d) //si la fecha actual es mayor a la fecha de finalizacion de del sistema no se puede realizar ningun metodo
             {
                 $value = "finalizado";
             }
