@@ -13,7 +13,7 @@
 ```
 composer install
 cp .env.example .env
-php artisan news:install
+php artisan example:install
 sudo chmod -R 775 storage bootstrap/cache
 chown -R www-data storage bootstrap/cache
 ```
