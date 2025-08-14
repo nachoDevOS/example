@@ -34,7 +34,7 @@
                 <div class="panel panel-bordered">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <div class="dataTables_length" id="dataTable_length">
                                     <label>Mostrar <select id="select-paginate" class="form-control input-sm">
                                         <option value="10">10</option>
@@ -44,7 +44,7 @@
                                     </select> registros</label>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input type="text" id="input-search" placeholder="🔍 Buscar..." class="form-control">
                             </div>
                         </div>
@@ -80,19 +80,27 @@
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
     <script>
         var countPage = 10, order = 'id', typeOrder = 'desc';
+        var timeout = null;
         $(document).ready(() => {
             list();
-            
             $('#input-search').on('keyup', function(e){
                 if(e.keyCode == 13) {
+                    // Cancelar el timeout del evento input si existe
+                    clearTimeout(timeout);
                     list();
                 }
             });
 
             $('#select-paginate').change(function(){
                 countPage = $(this).val();
-               
                 list();
+            });
+
+            $('#input-search').on('input', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    list();
+                }, 2000); // retardo de 2 segundos cada vez que se escribe algo en el input
             });
         });
 
