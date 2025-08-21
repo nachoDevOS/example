@@ -5,6 +5,8 @@ use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\RoleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,13 +36,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['loggin', 'system']], functi
 
     Route::get('people', [PersonController::class, 'index'])->name('voyager.people.index');
     Route::get('people/ajax/list', [PersonController::class, 'list']);
+    Route::post('people', [PersonController::class, 'store'])->name('voyager.people.store');
+    Route::put('people/{id}', [PersonController::class, 'update'])->name('voyager.people.update');
 
 
+    // Users
     Route::get('users/ajax/list', [UserController::class, 'list']);
     Route::post('users/store', [UserController::class, 'store'])->name('voyager.users.store');
     Route::put('users/{id}', [UserController::class, 'update'])->name('voyager.users.update');
     Route::delete('users/{id}/deleted', [UserController::class, 'destroy'])->name('voyager.users.destroy');
 
+    // Roles
+    Route::get('roles/ajax/list', [RoleController::class, 'list']);
 
 
     Route::get('ajax/personList', [AjaxController::class, 'personList']);

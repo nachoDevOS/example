@@ -15,10 +15,11 @@ class StorageController extends Controller
         $this->middleware('auth');
     }
 
-    // public function store_image($file, $folder, $size = 1200){
+    // public function store_image1($file, $folder, $size = 1200){
+
     //     try {
     //         Storage::makeDirectory($folder.'/'.date('F').date('Y'));
-    //         $base_name = Str::random(20);
+    //         $base_name = Str::random(20).'day'.date('d').date('a');
 
     //         // imagen normal
     //         $extension = 'avif'/* $file->getClientOriginalExtension()*/;
@@ -30,9 +31,10 @@ class StorageController extends Controller
     //         });
     //         Storage::put($path, $image_resize->encode('avif', 80));
 
+    //         $original = Image::make($file->getRealPath())->orientate();
     //         // imagen banner
     //         $filename_banner = $base_name.'-banner.'.$extension;
-    //         $image_resize = Image::make($file->getRealPath())->orientate();
+    //         $image_resize = $original;
     //         $image_resize->resize(900, null, function ($constraint) {
     //             $constraint->aspectRatio();
     //         });
@@ -41,7 +43,7 @@ class StorageController extends Controller
 
     //         // imagen medium
     //         $filename_medium = $base_name.'-medium.'.$extension;
-    //         $image_resize = Image::make($file->getRealPath())->orientate();
+    //         $image_resize = $original;
     //         $image_resize->resize(600, null, function ($constraint) {
     //             $constraint->aspectRatio();
     //         });
@@ -50,7 +52,7 @@ class StorageController extends Controller
 
     //         // imagen small
     //         $filename_small = $base_name.'-small.'.$extension;
-    //         $image_resize = Image::make($file->getRealPath())->orientate();
+    //         $image_resize = $original;
     //         $image_resize->resize(256, null, function ($constraint) {
     //             $constraint->aspectRatio();
     //         });
@@ -59,7 +61,7 @@ class StorageController extends Controller
 
     //         // imagen cropped
     //         $filename_cropped = $base_name.'-cropped.'.$extension;
-    //         $image_resize = Image::make($file->getRealPath())->orientate();
+    //         $image_resize = $original;
     //         $image_resize->resize(null, 300, function ($constraint) {
     //             $constraint->aspectRatio();
     //         });
@@ -85,8 +87,9 @@ class StorageController extends Controller
             }
 
             $monthYear = date('FY');
-            $directory = "{$folder}/{$monthYear}";
-            $baseName = Str::random(20);
+            $directory = "{$folder}/{$monthYear}/";
+            $baseName = Str::random(20).'day'.date('d').date('a');
+
             $extension = 'avif';
 
             Storage::makeDirectory($directory);
@@ -103,7 +106,8 @@ class StorageController extends Controller
                 '-cropped' => ['width' => 300, 'height' => 300, 'crop' => true, 'quality' => 80]
             ];
 
-            $paths = [];
+            $filename = $baseName.'.'.$extension;
+            $original =  $directory.$filename;
 
             foreach ($versions as $suffix => $config) {
                 $filename = $baseName . $suffix . '.' . $extension;
@@ -123,18 +127,18 @@ class StorageController extends Controller
                 }
 
                 Storage::put($path, $image->encode($extension, $config['quality']));
-                $paths[$suffix ? substr($suffix, 1) : 'original'] = $path;
+                // $original[$suffix ? substr($suffix, 1) : 'original'] = $path;
             }
 
-            if (env('FILESYSTEM_DRIVER') == 's3') {
-                $paths = array_map(function ($path) {
-                    return env('AWS_ENDPOINT') . '/' . env('AWS_BUCKET') . '/' . env('AWS_ROOT') . '/' . $path;
-                }, $paths);
+            // if (env('FILESYSTEM_DRIVER') == 's3') {
+            //     $original = array_map(function ($path) {
+            //         return env('AWS_ENDPOINT') . '/' . env('AWS_BUCKET') . '/' . env('AWS_ROOT') . '/' . $path;
+            //     }, $original);
                 
-                return $paths;
-            }
+            //     return $original;
+            // }
 
-            return $paths;
+            return $original;
 
         } catch (\Throwable $th) {
             \Log::error('Error al guardar la imagen: ' . $th->getMessage(), [
